@@ -1,0 +1,11 @@
+Dia 1--> *Lectura y apuntes Reflelcted XSS
+         *Laboratorio(Reflected XSS into HTML context with nothing encoded(1),Reflected XSS into attribute with angle brackets HTML-encoded(2),Reflected XSS into a JavaScript string with angle brackets HTML encoded(3),
+         Lab: Reflected XSS with some SVG markup allowed(4),
+         
+         2--> Debido a que '< y >' los capturas y los codifica hay que usar un payload que se pueda ejecutar dentro de una etiqueta h1. Por ello utilizo el evento onfocus=alert() y 
+         el evento autofocus hace que automaticamente se ejecute el codigo dentro del onfocus
+         3--> El script guarda lo introducido en la busqueda en una variable pero encodea los angle brackets. Formas de salirse de un string de javascript y ejecutar codigo es la 
+         siguiente:  '-alert(document.domain)-'
+         4--> La etiqueta svg esta permitida pero la mayoria de eventos estan bloqueados. Con burpsuite Intruder pruebas cuales son los eventos que no bloquea. El evento que no bloquea 
+         es el animateTransform y onBegin=script(<svg><animatetransform onbegin=alert(1) attributeName=transform>). Esto lo que hace es: es que genera animaciones a través de establecer
+         propiedades de transformacion.
