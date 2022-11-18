@@ -9,3 +9,20 @@ Dia 1--> *Lectura y apuntes Reflelcted XSS
          4--> La etiqueta svg esta permitida pero la mayoria de eventos estan bloqueados. Con burpsuite Intruder pruebas cuales son los eventos que no bloquea. El evento que no bloquea 
          es el animateTransform y onBegin=script(<svg><animatetransform onbegin=alert(1) attributeName=transform>). Esto lo que hace es: es que genera animaciones a través de establecer
          propiedades de transformacion.
+         
+Dia 2-->*Laboratorios(Reflected XSS into a JavaScript string with single quote and backslash escaped(1),Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped(2),
+        Reflected XSS into a template literal with angle brackets, single, double quotes, backslash and backticks Unicode-escaped(3)
+        1--> en este laboratorio los <y> estaban permitidos y la busqueda se introducia en una variable dentro de un script. Por tanto lo que habia que hacer era cerrar el script
+        y eras libre de manejar el codigo si no introducias ' y \. (</script><script>alert()</script>
+        2--> en este laboratorio estaban filtrados todos los caracteres excepto el backslash por lo que con el backslash delante de la ' que estaba bloqueada el programa lo detecta
+        como que se lo debe tomar para interpretar literalmente y no como un caracter especial.
+        3--> en este laboratorio estaban bloqueados todos los caracteres especiales incluidos el backslash por lo que la unica manera de introducir codigo era a traves del ${ } 
+        por lo que el payload:${alert()} funciona. 
+        Otra de forma de solucionarlo es pasarle directamente el codigo HTML-encodeado por lo que el codigo no filtra ningun caracter especial y al ejecutar se HTML-encodea y vuelve el 
+        caracter especial
+        
+    
+        
+        
+        
+      
