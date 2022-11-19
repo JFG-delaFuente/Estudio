@@ -20,8 +20,10 @@ Dia 2-->*Laboratorios(Reflected XSS into a JavaScript string with single quote a
         por lo que el payload:${alert()} funciona. 
         Otra de forma de solucionarlo es pasarle directamente el codigo HTML-encodeado por lo que el codigo no filtra ningun caracter especial y al ejecutar se HTML-encodea y vuelve el 
         caracter especial
-        
-    
+Dia 3-->*Lectura y apuntes Stored XSS
+        *Laboratorios(Stored XSS into HTML context with nothing encoded(1),Stored XSS into anchor href attribute with double quotes HTML-encoded(2)
+        2--> El comentario te pide introducir una url de una web de tu comentario y no tiene ningun tipo de filtro. Por lo que introduzco una url javascript:(codigo javascript)alert()
+            
         
         
         
