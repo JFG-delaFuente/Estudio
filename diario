@@ -23,7 +23,19 @@ Dia 2-->*Laboratorios(Reflected XSS into a JavaScript string with single quote a
 Dia 3-->*Lectura y apuntes Stored XSS
         *Laboratorios(Stored XSS into HTML context with nothing encoded(1),Stored XSS into anchor href attribute with double quotes HTML-encoded(2)
         2--> El comentario te pide introducir una url de una web de tu comentario y no tiene ningun tipo de filtro. Por lo que introduzco una url javascript:(codigo javascript)alert()
-            
+Dia 4-->*Buscar XSS en hackerone, encontré mi primer XSS muy sencillo pero era duplicado.
+Dia 5-->*Laboratorios Dom-based XSS(DOM XSS in document.write sink using source location.search(1),DOM XSS in document.write sink using source location.search inside a select element(2),
+        DOM XSS in innerHTML sink using source location.search(3),DOM XSS in jQuery anchor href attribute sink using location.search source(4),
+        Stored DOM XSS(5)
+        1.Al introducir un string te dabas cuenta que se introducia dentro de una img del src por lo que cerrabas el string con
+        "> e introducias un svg onload que daba un alert
+        2.La vulnerabilidad se encuentra en la consulta de stock,pero la web no deja introducir ningun nuevo producto para introducir codigo, pero 
+        en la url si añades &storeId='aqui te deja añadir cualquier cosa que quieras introducir' https://0a0a005503f4f63bc00e1e0300a70014.web-security-academy.net/product?productId=1&storeId=%3Cscript%3Ealert()%3C/script%3E
+        3.En este caso el sink encargado de escribir el search era innerHtml por lo que no se podia usar ni script ni svg y el contenido se mostraba dentro de la apertura y el cierre 
+        de dos span tags, por lo que simplemente con introducir <img src=1 onerror=alert()> ya funcionaba
+        4.En este caso el codigo contenia la libreria jquery y el atributo attr(href, )que la href cogia el codigo del return path de url, por lo que simplemente cambiando el path a
+        javascript:alert(document.cookie) ya saltaba la alerta
+        5.El comentario era tratado por un sink innerhtml por lo que no valia script ni svg pero con img onerror si funciona
         
         
         
